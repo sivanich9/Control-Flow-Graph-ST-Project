@@ -39,32 +39,37 @@ class MatrixCalculatorTest(unittest.TestCase):
         np.testing.assert_array_equal(actual_output, expected_output)
       
     def test_vector_addition2(self):
-        actual_output = calculator(2,1,[[1,2,3],[4,5,6],[7,8,9]],[[1,2,3],[4,5,6],[7,8,9]])
-        expected_output = [[2,4,6],[8,10,12],[14,16,18]]
+        actual_output = calculator(2,1,[[1,2,3],[4,5,6]],[[1,2,3],[4,5,6],[7,8,9]])
+        expected_output = "Dimensions of two matrices are not equal"
         np.testing.assert_array_equal(actual_output, expected_output)  
 
-    def test_vector_subtraction(self):
+    def test_vector_subtraction1(self):
         actual_output = calculator(2,2,[[10,11,12],[13,14,15],[16,17,18]],[[1,2,3],[4,5,6],[7,8,9]])
         expected_output = [[9,9,9],[9,9,9],[9,9,9]]
         np.testing.assert_array_equal(actual_output, expected_output)
+         
+    def test_vector_subtraction2(self):
+        actual_output = calculator(2,2,[[10,11,12],[13,14,15]],[[1,2,3],[4,5,6],[7,8,9]])
+        expected_output = "Dimensions of two matrices are not equal"
+        np.testing.assert_array_equal(actual_output, expected_output)     
     
     def test_vector_multiplication1(self):
-        actual_output = calculator(2,1,[],[])
+        actual_output = calculator(2,3,[],[])
         expected_output = "Empty matrix"
         np.testing.assert_array_equal(actual_output, expected_output)
          
     def test_vector_multiplication2(self):
-        actual_output = calculator(2,1,[[2]],[[3]])
+        actual_output = calculator(2,3,[[2]],[[3]])
         expected_output = [[6]]
         np.testing.assert_array_equal(actual_output, expected_output)    
    
     def test_vector_multiplication3(self):
-        actual_output = calculator(2,1,[[1,2,3],[4,5,6],[7,8,9]],[[1,2,3],[4,5,6],[7,8,9]])
+        actual_output = calculator(2,3,[[1,2,3],[4,5,6],[7,8,9]],[[1,2,3],[4,5,6],[7,8,9]])
         expected_output = [[30,36,42],[66,81,96],[102,126,150]]
         np.testing.assert_array_equal(actual_output, expected_output)
       
     def test_vector_multiplication4(self):
-        actual_output = calculator(2,1,[[1,2,3],[4,5,6]],[[7,8],[9,10]])
+        actual_output = calculator(2,3,[[1,2,3],[4,5,6]],[[7,8],[9,10]])
         expected_output = "column of first matrix is not equal to row of second matrix"
         np.testing.assert_array_equal(actual_output, expected_output)   
         
