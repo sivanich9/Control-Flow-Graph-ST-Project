@@ -123,6 +123,25 @@ class MatrixCalculatorTest(unittest.TestCase):
         np.testing.assert_array_equal(actual_output, expected_output)     
       
       
+    def test_singular_cofactor1(self):
+        actual_output = calculator(3,4,[[]])
+        expected_output = pass
+        np.testing.assert_array_equal(actual_output, expected_output)
+      
+    def test_singular_cofactor2(self):
+        actual_output = calculator(3,4,[[5]])
+        expected_output = [[1]]
+        np.testing.assert_array_equal(actual_output, expected_output)  
+         
+    def test_singular_cofactor3(self):
+        actual_output = calculator(3,4,[[2,-2,3],[1,4,5],[2,1,-3]])
+        expected_output = [[-17,13,-7],[-3,-12,-6],[-22,-7,10]]
+        np.testing.assert_array_equal(actual_output, expected_output)       
+     
+    def test_singular_cofactor4(self):
+        actual_output = calculator(3,4,[[1,2,3],[4,5,6]])
+        expected_output = pass
+        np.testing.assert_array_equal(actual_output, expected_output)
       
     #Stream operation test cases
    
