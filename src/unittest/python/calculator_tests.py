@@ -184,6 +184,69 @@ class MatrixCalculatorTest(unittest.TestCase):
         actual_output = calculator(3,6,[[1,2,3],[4,5,6]])
         expected_output = pass
         np.testing.assert_array_equal(actual_output, expected_output)
+         
+        
+      
+    def test_singular_check_symmetry1(self):
+        actual_output = calculator(3,7,[[]])
+        expected_output = True
+        np.testing.assert_array_equal(actual_output, expected_output)
+         
+    def test_singular_check_symmetry2(self):
+        actual_output = calculator(3,7,[[5]])
+        expected_output = True
+        np.testing.assert_array_equal(actual_output, expected_output)
+         
+    def test_singular_check_symmetry3(self):
+        actual_output = calculator(3,7,[[1,2,3],[2,5,6],[3,6,9]])
+        expected_output = True
+        np.testing.assert_array_equal(actual_output, expected_output)
+         
+    def test_singular_check_symmetry4(self):
+        actual_output = calculator(3,7,[[1,2,3],[4,5,6],[7,8,9]])
+        expected_output = False
+        np.testing.assert_array_equal(actual_output, expected_output)
+         
+    def test_singular_check_symmetry5(self):
+        actual_output = calculator(3,7,[[1,2,3],[4,5,6]])
+        expected_output = pass
+        np.testing.assert_array_equal(actual_output, expected_output)  
+      
+      
+    def test_singular_check_orthogonal1(self):
+        actual_output = calculator(3,8,[[]])
+        expected_output = pass
+        np.testing.assert_array_equal(actual_output, expected_output)
+      
+    def test_singular_check_orthogonal2(self):
+        actual_output = calculator(3,8,[[1]])
+        expected_output = True
+        np.testing.assert_array_equal(actual_output, expected_output)
+      
+    def test_singular_check_orthogonal3(self):
+        actual_output = calculator(3,8,[[5]])
+        expected_output = False
+        np.testing.assert_array_equal(actual_output, expected_output)
+      
+    def test_singular_check_orthogonal4(self):
+        actual_output = calculator(3,8,[[1,0],[0,1],[0,0]])
+        expected_output = True
+        np.testing.assert_array_equal(actual_output, expected_output)
+         
+    def test_singular_check_orthogonal5(self):
+        actual_output = calculator(3,8,[[2,3],[4,1],[5,0]])
+        expected_output = False
+        np.testing.assert_array_equal(actual_output, expected_output)  
+         
+    def test_singular_check_orthogonal6(self):
+        actual_output = calculator(3,8,[[1,0,0],[0,1,0],[0,0,1]])
+        expected_output = True
+        np.testing.assert_array_equal(actual_output, expected_output) 
+         
+    def test_singular_check_orthogonal7(self):
+        actual_output = calculator(3,8,[[1,2,3],[4,5,6],[7,8,9]])
+        expected_output = False
+        np.testing.assert_array_equal(actual_output, expected_output)      
    
       
     #Stream operation test cases
