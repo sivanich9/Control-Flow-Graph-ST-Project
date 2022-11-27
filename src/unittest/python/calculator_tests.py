@@ -45,7 +45,7 @@ class MatrixCalculatorTest(unittest.TestCase):
     
     def test_vector_multiplication1(self):
         actual_output = calculator(2,1,[],[])
-        expected_output = []
+        expected_output = "Empty matrix"
         np.testing.assert_array_equal(actual_output, expected_output)
          
     def test_vector_multiplication2(self):
@@ -60,14 +60,14 @@ class MatrixCalculatorTest(unittest.TestCase):
       
     def test_vector_multiplication4(self):
         actual_output = calculator(2,1,[[1,2,3],[4,5,6]],[[7,8],[9,10]])
-        expected_output = pass
+        expected_output = "column of first matrix is not equal to row of second matrix"
         np.testing.assert_array_equal(actual_output, expected_output)   
         
     #Singular matrix operation test cases
    
     def test_singular_transpose1(self):
         actual_output = calculator(3,1,[[]])
-        expected_output = pass
+        expected_output = "Empty matrix"
         np.testing.assert_array_equal(actual_output, expected_output)
       
     def test_singular_transpose2(self):
@@ -98,13 +98,13 @@ class MatrixCalculatorTest(unittest.TestCase):
          
     def test_singular_determinant4(self):
         actual_output = calculator(3,2,[[1,0,2,-1],[3,0,0,5],[2,1,4,-3]])
-        expected_output = pass
+        expected_output = "Not a square matrix"
         np.testing.assert_array_equal(actual_output, expected_output)   
       
       
     def test_singular_minor1(self):
         actual_output = calculator(3,3,[[]])
-        expected_output = pass
+        expected_output = "Empty matrix"
         np.testing.assert_array_equal(actual_output, expected_output)
       
     def test_singular_minor2(self):
@@ -119,13 +119,13 @@ class MatrixCalculatorTest(unittest.TestCase):
      
     def test_singular_minor4(self):
         actual_output = calculator(3,3,[[1,2,3],[4,5,6]])
-        expected_output = pass
+        expected_output = "Not a square matrix"
         np.testing.assert_array_equal(actual_output, expected_output)     
       
       
     def test_singular_cofactor1(self):
         actual_output = calculator(3,4,[[]])
-        expected_output = pass
+        expected_output = "Empty matrix"
         np.testing.assert_array_equal(actual_output, expected_output)
       
     def test_singular_cofactor2(self):
@@ -140,13 +140,13 @@ class MatrixCalculatorTest(unittest.TestCase):
      
     def test_singular_cofactor4(self):
         actual_output = calculator(3,4,[[1,2,3],[4,5,6]])
-        expected_output = pass
+        expected_output = "Not a square matrix"
         np.testing.assert_array_equal(actual_output, expected_output)
          
       
     def test_singular_adjoint1(self):
         actual_output = calculator(3,5,[[]])
-        expected_output = pass
+        expected_output = "Empty matrix"
         np.testing.assert_array_equal(actual_output, expected_output)
       
     def test_singular_adjoint2(self):
@@ -161,13 +161,13 @@ class MatrixCalculatorTest(unittest.TestCase):
      
     def test_singular_adjoint4(self):
         actual_output = calculator(3,5,[[1,2,3],[4,5,6]])
-        expected_output = pass
+        expected_output = "Not a square matrix"
         np.testing.assert_array_equal(actual_output, expected_output)  
          
          
     def test_singular_inverse1(self):
         actual_output = calculator(3,6,[[]])
-        expected_output = pass
+        expected_output = "Empty matrix"
         np.testing.assert_array_equal(actual_output, expected_output)
       
     def test_singular_inverse2(self):
@@ -182,8 +182,13 @@ class MatrixCalculatorTest(unittest.TestCase):
      
     def test_singular_inverse4(self):
         actual_output = calculator(3,6,[[1,2,3],[4,5,6]])
-        expected_output = pass
+        expected_output = "Not a square matrix"
         np.testing.assert_array_equal(actual_output, expected_output)
+         
+    def test_singular_inverse5(self):
+        actual_output = calculator(3,6,[[1,2,3],[2,4,4],[1,2,5]])
+        expected_output = "Determinant of a matrix is zero"
+        np.testing.assert_array_equal(actual_output, expected_output)     
          
         
       
@@ -209,13 +214,13 @@ class MatrixCalculatorTest(unittest.TestCase):
          
     def test_singular_check_symmetry5(self):
         actual_output = calculator(3,7,[[1,2,3],[4,5,6]])
-        expected_output = pass
+        expected_output = "Not a square matrix"
         np.testing.assert_array_equal(actual_output, expected_output)  
       
       
     def test_singular_check_orthogonal1(self):
         actual_output = calculator(3,8,[[]])
-        expected_output = pass
+        expected_output = "Empty matrix"
         np.testing.assert_array_equal(actual_output, expected_output)
       
     def test_singular_check_orthogonal2(self):
@@ -247,6 +252,27 @@ class MatrixCalculatorTest(unittest.TestCase):
         actual_output = calculator(3,8,[[1,2,3],[4,5,6],[7,8,9]])
         expected_output = False
         np.testing.assert_array_equal(actual_output, expected_output)      
+         
+         
+    def test_singular_check_inverse1(self):
+        actual_output = calculator(3,9,[[]])
+        expected_output = "Empty matrix"
+        np.testing.assert_array_equal(actual_output, expected_output)
+      
+    def test_singular_check_inverse2(self):
+        actual_output = calculator(3,9,[[5]])
+        expected_output = True
+        np.testing.assert_array_equal(actual_output, expected_output)  
+         
+    def test_singular_check_inverse3(self):
+        actual_output = calculator(3,9,[[2,-2,3],[1,4,5],[2,1,-3]])
+        expected_output = True
+        np.testing.assert_array_equal(actual_output, expected_output)       
+     
+    def test_singular_check_inverse4(self):
+        actual_output = calculator(3,6,[[1,2,3],[2,4,4],[1,2,5]])
+        expected_output = False
+        np.testing.assert_array_equal(actual_output, expected_output)     
    
       
     #Stream operation test cases
