@@ -163,6 +163,28 @@ class MatrixCalculatorTest(unittest.TestCase):
         actual_output = calculator(3,5,[[1,2,3],[4,5,6]])
         expected_output = pass
         np.testing.assert_array_equal(actual_output, expected_output)  
+         
+         
+    def test_singular_inverse1(self):
+        actual_output = calculator(3,6,[[]])
+        expected_output = pass
+        np.testing.assert_array_equal(actual_output, expected_output)
+      
+    def test_singular_inverse2(self):
+        actual_output = calculator(3,6,[[5]])
+        expected_output = [[1/5]]
+        np.testing.assert_array_equal(actual_output, expected_output)  
+         
+    def test_singular_inverse3(self):
+        actual_output = calculator(3,6,[[2,-2,3],[1,4,5],[2,1,-3]])
+        expected_output = [[17/81,1/27,22/81],[-13/81,4/27,7/81],[7/81,2/27,-10/81]]
+        np.testing.assert_array_equal(actual_output, expected_output)       
+     
+    def test_singular_inverse4(self):
+        actual_output = calculator(3,6,[[1,2,3],[4,5,6]])
+        expected_output = pass
+        np.testing.assert_array_equal(actual_output, expected_output)
+   
       
     #Stream operation test cases
    
