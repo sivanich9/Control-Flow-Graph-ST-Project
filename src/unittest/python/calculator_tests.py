@@ -285,8 +285,18 @@ class MatrixCalculatorTest(unittest.TestCase):
     def test_singular_check_inverse4(self):
         actual_output = calculator(3,9,[[1,2,3],[2,4,4],[1,2,5]])
         expected_output = False
+        np.testing.assert_array_equal(actual_output, expected_output)
+      
+      
+    def test_singular_find_rank1(self):
+        actual_output = calculator(3,10,[[]])
+        expected_output = 0
+        np.testing.assert_array_equal(actual_output, expected_output)
+         
+    def test_singular_find_rank2(self):
+        actual_output = calculator(3,10,[[1,0,5],[2,3,0]])
+        expected_output = 2
         np.testing.assert_array_equal(actual_output, expected_output)     
-   
       
     #Stream operation test cases
    
