@@ -49,8 +49,8 @@ class MatrixCalculatorTest(unittest.TestCase):
         np.testing.assert_array_equal(actual_output, expected_output)
          
     def test_vector_multiplication2(self):
-        actual_output = calculator(2,1,[2],[3])
-        expected_output = [6]
+        actual_output = calculator(2,1,[[2]],[[3]])
+        expected_output = [[6]]
         np.testing.assert_array_equal(actual_output, expected_output)    
    
     def test_vector_multiplication3(self):
@@ -67,18 +67,39 @@ class MatrixCalculatorTest(unittest.TestCase):
    
     def test_singular_transpose1(self):
         actual_output = calculator(3,1,[])
-        expected_output = []
+        expected_output = pass
         np.testing.assert_array_equal(actual_output, expected_output)
       
     def test_singular_transpose2(self):
-        actual_output = calculator(3,1,[5])
-        expected_output = [5]
+        actual_output = calculator(3,1,[[5]])
+        expected_output = [[5]]
         np.testing.assert_array_equal(actual_output, expected_output)
          
     def test_singular_transpose3(self):
         actual_output = calculator(3,1,[[1,2,3],[4,5,6]])
         expected_output = [[1,4],[2,5],[3,6]]
         np.testing.assert_array_equal(actual_output, expected_output)     
+      
+    def test_singular_determinant1(self):
+        actual_output = calculator(3,2,[])
+        expected_output = pass
+        np.testing.assert_array_equal(actual_output, expected_output)
+      
+    def test_singular_determinant2(self):
+        actual_output = calculator(3,2,[[10]])
+        expected_output = 10
+        np.testing.assert_array_equal(actual_output, expected_output)  
+         
+    def test_singular_determinant3(self):
+        actual_output = calculator(3,2,[[1,0,2,-1],[3,0,0,5],[2,1,4,-3],[1,0,5,0]])
+        expected_output = 30
+        np.testing.assert_array_equal(actual_output, expected_output)    
+         
+    def test_singular_determinant3(self):
+        actual_output = calculator(3,2,[[1,0,2,-1],[3,0,0,5],[2,1,4,-3]])
+        expected_output = pass
+        np.testing.assert_array_equal(actual_output, expected_output)   
+      
       
       
     #Stream operation test cases
