@@ -142,6 +142,27 @@ class MatrixCalculatorTest(unittest.TestCase):
         actual_output = calculator(3,4,[[1,2,3],[4,5,6]])
         expected_output = pass
         np.testing.assert_array_equal(actual_output, expected_output)
+         
+      
+    def test_singular_adjoint1(self):
+        actual_output = calculator(3,5,[[]])
+        expected_output = pass
+        np.testing.assert_array_equal(actual_output, expected_output)
+      
+    def test_singular_adjoint2(self):
+        actual_output = calculator(3,5,[[5]])
+        expected_output = [[1]]
+        np.testing.assert_array_equal(actual_output, expected_output)  
+         
+    def test_singular_adjoint3(self):
+        actual_output = calculator(3,5,[[2,-2,3],[1,4,5],[2,1,-3]])
+        expected_output = [[-17,-3,-22],[13,-12,-7],[-7,-6,10]]
+        np.testing.assert_array_equal(actual_output, expected_output)       
+     
+    def test_singular_adjoint4(self):
+        actual_output = calculator(3,5,[[1,2,3],[4,5,6]])
+        expected_output = pass
+        np.testing.assert_array_equal(actual_output, expected_output)  
       
     #Stream operation test cases
    
