@@ -66,7 +66,7 @@ class MatrixCalculatorTest(unittest.TestCase):
     #Singular matrix operation test cases
    
     def test_singular_transpose1(self):
-        actual_output = calculator(3,1,[])
+        actual_output = calculator(3,1,[[]])
         expected_output = pass
         np.testing.assert_array_equal(actual_output, expected_output)
       
@@ -79,10 +79,11 @@ class MatrixCalculatorTest(unittest.TestCase):
         actual_output = calculator(3,1,[[1,2,3],[4,5,6]])
         expected_output = [[1,4],[2,5],[3,6]]
         np.testing.assert_array_equal(actual_output, expected_output)     
+         
       
     def test_singular_determinant1(self):
-        actual_output = calculator(3,2,[])
-        expected_output = pass
+        actual_output = calculator(3,2,[[]])
+        expected_output = 1
         np.testing.assert_array_equal(actual_output, expected_output)
       
     def test_singular_determinant2(self):
@@ -95,10 +96,31 @@ class MatrixCalculatorTest(unittest.TestCase):
         expected_output = 30
         np.testing.assert_array_equal(actual_output, expected_output)    
          
-    def test_singular_determinant3(self):
+    def test_singular_determinant4(self):
         actual_output = calculator(3,2,[[1,0,2,-1],[3,0,0,5],[2,1,4,-3]])
         expected_output = pass
         np.testing.assert_array_equal(actual_output, expected_output)   
+      
+      
+    def test_singular_minor1(self):
+        actual_output = calculator(3,3,[[]])
+        expected_output = pass
+        np.testing.assert_array_equal(actual_output, expected_output)
+      
+    def test_singular_minor2(self):
+        actual_output = calculator(3,3,[[5]])
+        expected_output = [[1]]
+        np.testing.assert_array_equal(actual_output, expected_output)  
+         
+    def test_singular_minor3(self):
+        actual_output = calculator(3,3,[[2,-2,3],[1,4,5],[2,1,-3]])
+        expected_output = [[-17,-13,-7],[3,-12,6],[-22,7,10]]
+        np.testing.assert_array_equal(actual_output, expected_output)       
+     
+    def test_singular_minor4(self):
+        actual_output = calculator(3,3,[[1,2,3],[4,5,6]])
+        expected_output = pass
+        np.testing.assert_array_equal(actual_output, expected_output)     
       
       
       
