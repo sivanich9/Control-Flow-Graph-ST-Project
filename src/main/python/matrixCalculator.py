@@ -190,6 +190,24 @@ class SingleMatrixOperation:
         return [
             row[:j] + row[j + 1 :] for row in (self.matrix[:i] + self.matrix[i + 1 :])
         ]
+    
+
+    def minorMatrix(self):
+        if len(self.matrix[0]) != len(self.matrix):
+            raise Exception("Not a square matrix")
+
+        if len(self.matrix[0]) == 1 and len(self.matrix) == 1:
+            return [[1]]
+        
+        if self.matrix == [[]]:
+            raise Exception("Null matrix")
+        
+        mm = np.zeros(np.array(self.matrix).shape)
+        for r in range(len(self.matrix)):
+            for c in range(len(self.matrix[0])):
+                mm[r][c] = round(np.linalg.det(self.minor(r, c)))
+
+        return mm
 
     
 
@@ -232,13 +250,11 @@ class SingleMatrixOperation:
         if len(self.matrix[0]) != len(self.matrix):
             raise Exception("Not a square matrix")
 
-        cofactors = []
-        for r in range(len(self.matrix)):
-            cofactorRow = []
-            for c in range(len(self.matrix)):
-                minor = self.minor(r, c)
-                cofactorRow.append(round(((-1) ** (r + c)) * np.linalg.det(minor)))
-            cofactors.append(cofactorRow)
+        cofactors = np.zeros(np.array(self.matrix).shape)
+        minor = self.minorMatrix()
+        for r in range(len(minor)):
+            for c in range(len(minor[0])):
+                cofactors[r][c] = (-1)**(r + c) * minor[r][c]
         return cofactors
 
     
@@ -254,14 +270,12 @@ class SingleMatrixOperation:
             raise Exception("Not a square matrix")
 
         cofactors = []
-        for r in range(len(self.matrix)):
-            cofactorRow = []
-            for c in range(len(self.matrix)):
-                minor = self.minor(r, c)
-                cofactorRow.append(round(((-1) ** (r + c)) * np.linalg.det(minor)))
-            cofactors.append(cofactorRow)
-        cofactors = np.array(cofactors)
-        return cofactors.T
+        cofactors = np.zeros(np.array(self.matrix).shape)
+        minor = self.minorMatrix()
+        for r in range(len(minor)):
+            for c in range(len(minor[0])):
+                cofactors[r][c] = (-1)**(r + c) * minor[r][c]
+        return cofactors.T 
 
     
 
@@ -377,7 +391,7 @@ def calculator(firstChoice, secondChoice, firstInput, secondInput=None):
             return result
 
         elif secondChoice == 3:
-            result = singlematrixops.minor(1, 1)
+            result = singlematrixops.minorMatrix()
             return result
 
         elif secondChoice == 4:
