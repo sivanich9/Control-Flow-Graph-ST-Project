@@ -332,6 +332,52 @@ class SingleMatrixOperation:
 
         return True
 
+    
+    def rank(self):
+        def swap(Matrix, row1, row2, col):
+            for i in range(col):
+                temp = Matrix[row1][i]
+                Matrix[row1][i] = Matrix[row2][i]
+                Matrix[row2][i] = temp
+                
+    
+        rank = len(self.matrix[0])
+        for row in range(0, rank, 1):
+            if self.matrix[row][row] != 0:
+                for col in range(0, len(self.matrix), 1):
+                    if col != row:
+                        multiplier = (self.matrix[col][row] /
+                                    self.matrix[row][row])
+                        for i in range(rank):
+                            self.matrix[col][i] -= (multiplier * self.matrix[row][i])
+                                                
+          
+            else:
+                reduce = True
+                for i in range(row + 1, len(self.matrix), 1):
+                    if self.matrix[i][row] != 0:
+                        self.swap(self.matrix, row, i, rank)
+                        reduce = False
+                        break
+                        
+                if reduce:
+                    rank -= 1
+        
+                    for i in range(0, len(self.matrix), 1):
+                        self.matrix[i][row] = self.matrix[i][rank]
+                        
+                row -= 1
+        return rank
+    
+    
+
+    def checkInvertible(self):
+        if self.matrix == [[]]:
+            raise Exception("Empty matrix")
+        if np.linalg.det(self.matrix) != 0:
+            return True
+        else:
+            return False 
 
 
 
@@ -412,4 +458,13 @@ def calculator(firstChoice, secondChoice, firstInput, secondInput=None):
         
         elif secondChoice == 8:
             result = singlematrixops.checkOrthogonal()
+            return result 
+        
+        elif secondChoice == 9:
+            result = singlematrixops.checkInvertible()
+            return result 
+        
+
+        elif secondChoice == 10:
+            result = singlematrixops.rank()
             return result 
