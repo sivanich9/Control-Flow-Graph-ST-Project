@@ -62,18 +62,24 @@ class VectorOperations:
     """
 
     def __init__(self, matrix1, matrix2):
-        self.matrix1 = matrix1
-        self.matrix2 = matrix2
+        self.matrix1 = np.array(matrix1)
+        self.matrix2 = np.array(matrix2)
 
         
     def addition(self):
-        result = np.add(self.matrix1, self.matrix2)
-        return result
+        if self.matrix1.shape == self.matrix2.shape:
+            result = np.add(self.matrix1, self.matrix2)
+            return result
+        else:
+            raise Exception("Dimensions of two matrices are not equal")
 
     
     def subtraction(self):
-        result = np.subtract(self.matrix1, self.matrix2)
-        return result
+        if self.matrix1.shape == self.matrix2.shape:
+            result = np.subtract(self.matrix1, self.matrix2)
+            return result
+        else:
+            raise Exception("Dimensions of two matrices are not equal")
 
     
     def multiplication(self):
