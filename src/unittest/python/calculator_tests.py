@@ -314,14 +314,13 @@ class MatrixCalculatorTest(unittest.TestCase):
     def test_singular_check_orthogonal7(self):
         actual_output = calculator(3,8,[[1,2,3],[4,5,6],[7,8,9]])
         expected_output = False
-        np.testing.assert_array_equal(actual_output, expected_output)
-         
-         
-         
+        np.testing.assert_array_equal(actual_output, expected_output) 
+
+
     def test_singular_check_inverse1(self):
-        actual_output = calculator(3,9,[[]])
-        expected_output = "Empty matrix"
-        np.testing.assert_array_equal(actual_output, expected_output)
+        with self.assertRaises(Exception) as context:
+            calculator(3, 9, [[]])
+        self.assertEqual("Empty matrix", str(context.exception))
       
     def test_singular_check_inverse2(self):
         actual_output = calculator(3,9,[[5]])
@@ -337,44 +336,32 @@ class MatrixCalculatorTest(unittest.TestCase):
         actual_output = calculator(3,9,[[1,2,3],[2,4,4],[1,2,5]])
         expected_output = False
         np.testing.assert_array_equal(actual_output, expected_output)
-      
-      
+
+    
     def test_singular_find_rank1(self):
         actual_output = calculator(3,10,[[]])
         expected_output = 0
         np.testing.assert_array_equal(actual_output, expected_output)
          
     def test_singular_find_rank2(self):
-        actual_output = calculator(3,10,[[1,0,5],[2,3,0]])
-        expected_output = 2
-        np.testing.assert_array_equal(actual_output, expected_output)
-         
-    def test_singular_find_rank3(self):
         actual_output = calculator(3,10,[[0,0,1],[0,0,5],[0,0,0]])
         expected_output = 1
         np.testing.assert_array_equal(actual_output, expected_output)       
          
-    def test_singular_find_rank4(self):
+    def test_singular_find_rank3(self):
         actual_output = calculator(3,10,[[1,2,3],[4,6,9],[15,12,11]])
         expected_output = 3
         np.testing.assert_array_equal(actual_output, expected_output)   
          
-    def test_singular_find_rank5(self):
+    def test_singular_find_rank4(self):
         actual_output = calculator(3,10,[[1,2,3],[4,5,6],[7,8,9]])
         expected_output = 2
-        np.testing.assert_array_equal(actual_output, expected_output)        
-      
-    #Stream operation test cases
-   
-   
-    #Exit  
-   
+        np.testing.assert_array_equal(actual_output, expected_output)  
     
         
-        
+        # Stream operation test cases
 
-
-        
+    # Exit
 
 
 if __name__ == "__main__":
